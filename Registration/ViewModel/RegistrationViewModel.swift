@@ -7,97 +7,51 @@
 
 import Foundation
 import UIKit
+import Combine
 
-
-enum Section: Hashable {
-    case avatar
-    case basicInfo
-    case submitBtn
-    
-    struct Item: Hashable {
-        let id: UUID = UUID()
-        let cellType: RegistrationFormType
-        
-        func hash(into hasher: inout Hasher) {
-            hasher.combine(id)
-        }
-        
-        static func == (lhs: Item, rhs: Item) -> Bool {
-           return lhs.id == rhs.id
-        }
-    }
-    
-    var id: String {
-        switch self {
-        case .avatar:
-            return "avatar"
-        case .basicInfo:
-            return "basicInfo"
-        case .submitBtn:
-            return "submitBtn"
-        }
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-    
-    static func == (lhs: Section, rhs: Section) -> Bool {
-       return lhs.id == rhs.id
-    }
-    
+enum RegistrationFormUISize {
+    static let avatarRowH: CGFloat = 120
+    static let submitSectionBottom: CGFloat = 120
+    static let submitRowH: CGFloat = 100
 }
 
-class Avatar: Hashable {
-    static func == (lhs: Avatar, rhs: Avatar) -> Bool {
-       return lhs.filePath == rhs.filePath
+class RegistrationViewModel {
+    let avatarSelectObject: PassthroughSubject<Void, Never> = .init()
+    let avatarValue: CurrentValueSubject<UIImage?, Never> = .init(nil)
+
+    
+    var avatarRowH: CGFloat {
+        return RegistrationFormUISize.avatarRowH
     }
     
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(filePath)
+    var submitRowH: CGFloat {
+        return RegistrationFormUISize.submitRowH
     }
     
-    var filePath: String
-    var title: String = "Avatar"
+    var basicInfoRowH: CGFloat {
+        let navbarH: CGFloat = 103
+        let basicItemCount: CGFloat = CGFloat(sections.first(where: { $0.sectionType == .basicInfo})?.items.count ?? 0)
+        return (UIScreen.main.bounds.height - navbarH - RegistrationFormUISize.avatarRowH -
+                (RegistrationFormUISize.submitRowH + RegistrationFormUISize.submitSectionBottom)) / basicItemCount
+    }
+    var sections: [Section]
     
-    init(filePath: String) {
-        self.filePath = filePath
+    init() {
+        self.sections = [
+            Section(sectionType: .avatar, items: [
+                .init(cellType: .avatar(.init(
+                    filePath: "",
+                    selectSubject: avatarSelectObject,
+                    currentImage: avatarValue
+                )))]),
+            Section(sectionType: .basicInfo, items: [
+                .init(cellType: .firstName(.init(title: "Firt Name"))),
+                .init(cellType: .lastName(.init(title: "Last Name"))),
+                .init(cellType: .phoneNumber(.init(title: "phone Number"))),
+                .init(cellType: .email(.init(title: "Email"))),
+                .init(cellType: .avatarColor(.init(title: "Customer Avatar Color")))
+            ]),
+            Section(sectionType: .submitBtn, items: [.init(cellType: .submitBtn)])
+        ]
     }
 }
-
-class BasicInfo: Identfier {
-    var title: String
-    var content: String = ""
-    var placeHolder: String = "Please input"
-    
-    init(title: String, content: String = "", placeHolder: String = "Please input") {
-        self.title = title
-        self.content = content
-        self.placeHolder = placeHolder
-    }
-
-}
-
-enum RegistrationFormType {
-    case avatar(Avatar)
-    case firstName(BasicInfo)
-    case lastName(BasicInfo)
-    case phoneNumber(BasicInfo)
-    case email(BasicInfo)
-    case avatarColor(BasicInfo)
-    case submitBtn
-    case none
-}
-
-class Identfier: Hashable {
-    var id = UUID()
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-    
-    static func == (lhs: Identfier, rhs: Identfier) -> Bool {
-        lhs.id == rhs.id
-    }
-}
-

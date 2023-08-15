@@ -16,7 +16,7 @@ class ViewController: UIViewController {
 
 
     @IBAction func registerBtnAction(_ sender: UIButton) {
-        let registerVC = RegistrationViewController()
+        let registerVC = RegistrationViewController(viewModel: .init())
         navigationController?.pushViewController(registerVC, animated: true)
     }
 }

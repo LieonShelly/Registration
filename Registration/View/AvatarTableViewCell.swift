@@ -8,8 +8,11 @@
 
 import UIKit
 import SnapKit
+import Combine
 
 class AvatarTableViewCell: UITableViewCell {
+    var bag: Set<AnyCancellable> = .init()
+    private var btnDidClick: (() -> Void)?
     private lazy var titleLabel: UILabel = {
        let label = UILabel()
         label.textColor = .black
@@ -35,7 +38,8 @@ class AvatarTableViewCell: UITableViewCell {
     
     private lazy var avatarView: UIImageView = {
        let view = UIImageView()
-        view.layer.cornerRadius = 25
+        view.isUserInteractionEnabled = true
+        view.layer.cornerRadius = 40
         view.layer.masksToBounds = true
         view.backgroundColor = .blue
         return view
@@ -63,12 +67,12 @@ class AvatarTableViewCell: UITableViewCell {
             $0.top.bottom.equalToSuperview().inset(8)
         }
         avatarContainerView.snp.makeConstraints {
-            $0.width.equalTo(64)
+            $0.width.equalTo(avatarContainerView.snp.height)
             $0.centerY.equalToSuperview()
             $0.top.bottom.right.equalToSuperview().inset(4)
         }
         avatarView.snp.makeConstraints {
-            $0.size.equalTo(CGSize(width: 50, height: 50))
+            $0.size.equalTo(CGSize(width: 80, height: 80))
             $0.center.equalToSuperview()
         }
         
@@ -76,15 +80,30 @@ class AvatarTableViewCell: UITableViewCell {
             $0.centerY.equalToSuperview()
             $0.left.equalTo(6)
         }
-        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.btnAction))
+        avatarView.addGestureRecognizer(tap)
     }
     
-    func config(title: String) {
+    func config(title: String, btnDidClick: (() -> Void)? = nil) {
         self.titleLabel.text = title
+        self.btnDidClick = btnDidClick
+    }
+    
+    func updateAvatar(_ img: UIImage?) {
+        self.avatarView.image = img
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        bag.removeAll()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc
+    private func btnAction() {
+        btnDidClick?()
+    }
 }

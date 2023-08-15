@@ -10,6 +10,8 @@
 		70D491DB3A1B6B90D42D9000 /* Pods_RegistrationUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D36467E1ABD36B0B6DBC916 /* Pods_RegistrationUITests.framework */; };
 		919E279C60AFEAA7C44F9A4B /* Pods_RegistrationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D4A98F2C1AC96A62448CAFF /* Pods_RegistrationTests.framework */; };
 		CEF1CEF6F0A5302330CB718B /* Pods_Registration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 509A7A6C84D7F7575F3D513D /* Pods_Registration.framework */; };
+		F8B472CA2A8BCE61005DE249 /* RightBtnTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B472C92A8BCE61005DE249 /* RightBtnTableViewCell.swift */; };
+		F8B472CD2A8BD24D005DE249 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B472CC2A8BD24D005DE249 /* Section.swift */; };
 		F8FFAFF62A8A6A9900CB1A7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FFAFF52A8A6A9900CB1A7C /* AppDelegate.swift */; };
 		F8FFAFF82A8A6A9900CB1A7C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FFAFF72A8A6A9900CB1A7C /* SceneDelegate.swift */; };
 		F8FFAFFA2A8A6A9900CB1A7C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FFAFF92A8A6A9900CB1A7C /* ViewController.swift */; };
@@ -54,6 +56,8 @@
 		C66448A0F884014B8B2FF1A0 /* Pods-Registration-RegistrationUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Registration-RegistrationUITests.release.xcconfig"; path = "Target Support Files/Pods-Registration-RegistrationUITests/Pods-Registration-RegistrationUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D3F7375DEC0F3FD513A8E79D /* Pods-RegistrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RegistrationTests.release.xcconfig"; path = "Target Support Files/Pods-RegistrationTests/Pods-RegistrationTests.release.xcconfig"; sourceTree = "<group>"; };
 		EBF20DECD40E4407F91BAA74 /* Pods-RegistrationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RegistrationTests.debug.xcconfig"; path = "Target Support Files/Pods-RegistrationTests/Pods-RegistrationTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F8B472C92A8BCE61005DE249 /* RightBtnTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightBtnTableViewCell.swift; sourceTree = "<group>"; };
+		F8B472CC2A8BD24D005DE249 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		F8FFAFF22A8A6A9900CB1A7C /* Registration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Registration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8FFAFF52A8A6A9900CB1A7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8FFAFF72A8A6A9900CB1A7C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +132,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		F8B472CB2A8BD23F005DE249 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F8B472CC2A8BD24D005DE249 /* Section.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		F8FFAFE92A8A6A9900CB1A7C = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +165,7 @@
 		F8FFAFF42A8A6A9900CB1A7C /* Registration */ = {
 			isa = PBXGroup;
 			children = (
+				F8B472CB2A8BD23F005DE249 /* Model */,
 				F8FFB02F2A8A7B9A00CB1A7C /* ViewModel */,
 				F8FFB0262A8A6BED00CB1A7C /* Controller */,
 				F8FFB0252A8A6BE300CB1A7C /* View */,
@@ -188,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				F8FFB0292A8A71BE00CB1A7C /* TextFieldTableViewCell.swift */,
+				F8B472C92A8BCE61005DE249 /* RightBtnTableViewCell.swift */,
 				F8FFB0322A8A85EC00CB1A7C /* AvatarTableViewCell.swift */,
 				F8FFB0342A8A942E00CB1A7C /* CenterButtonTableViewCell.swift */,
 			);
@@ -436,6 +450,8 @@
 				F8FFB0352A8A942E00CB1A7C /* CenterButtonTableViewCell.swift in Sources */,
 				F8FFAFF62A8A6A9900CB1A7C /* AppDelegate.swift in Sources */,
 				F8FFB0282A8A6CE700CB1A7C /* RegistrationViewController.swift in Sources */,
+				F8B472CD2A8BD24D005DE249 /* Section.swift in Sources */,
+				F8B472CA2A8BCE61005DE249 /* RightBtnTableViewCell.swift in Sources */,
 				F8FFAFF82A8A6A9900CB1A7C /* SceneDelegate.swift in Sources */,
 				F8FFB02A2A8A71BE00CB1A7C /* TextFieldTableViewCell.swift in Sources */,
 				F8FFB0332A8A85EC00CB1A7C /* AvatarTableViewCell.swift in Sources */,
