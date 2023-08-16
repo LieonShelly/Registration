@@ -12,6 +12,7 @@
 		CEF1CEF6F0A5302330CB718B /* Pods_Registration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 509A7A6C84D7F7575F3D513D /* Pods_Registration.framework */; };
 		F8B472CA2A8BCE61005DE249 /* RightBtnTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B472C92A8BCE61005DE249 /* RightBtnTableViewCell.swift */; };
 		F8B472CD2A8BD24D005DE249 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B472CC2A8BD24D005DE249 /* Section.swift */; };
+		F8C440332A8D2D5F002B1CC6 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C440322A8D2D5F002B1CC6 /* ColorPickerView.swift */; };
 		F8FFAFF62A8A6A9900CB1A7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FFAFF52A8A6A9900CB1A7C /* AppDelegate.swift */; };
 		F8FFAFF82A8A6A9900CB1A7C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FFAFF72A8A6A9900CB1A7C /* SceneDelegate.swift */; };
 		F8FFAFFA2A8A6A9900CB1A7C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FFAFF92A8A6A9900CB1A7C /* ViewController.swift */; };
@@ -58,6 +59,7 @@
 		EBF20DECD40E4407F91BAA74 /* Pods-RegistrationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RegistrationTests.debug.xcconfig"; path = "Target Support Files/Pods-RegistrationTests/Pods-RegistrationTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F8B472C92A8BCE61005DE249 /* RightBtnTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightBtnTableViewCell.swift; sourceTree = "<group>"; };
 		F8B472CC2A8BD24D005DE249 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		F8C440322A8D2D5F002B1CC6 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		F8FFAFF22A8A6A9900CB1A7C /* Registration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Registration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8FFAFF52A8A6A9900CB1A7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8FFAFF72A8A6A9900CB1A7C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				F8B472C92A8BCE61005DE249 /* RightBtnTableViewCell.swift */,
 				F8FFB0322A8A85EC00CB1A7C /* AvatarTableViewCell.swift */,
 				F8FFB0342A8A942E00CB1A7C /* CenterButtonTableViewCell.swift */,
+				F8C440322A8D2D5F002B1CC6 /* ColorPickerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				TargetAttributes = {
 					F8FFAFF12A8A6A9900CB1A7C = {
 						CreatedOnToolsVersion = 14.3;
+						LastSwiftMigration = 1430;
 					};
 					F8FFB0072A8A6A9D00CB1A7C = {
 						CreatedOnToolsVersion = 14.3;
@@ -449,6 +453,7 @@
 				F8FFB0312A8A7BB100CB1A7C /* RegistrationViewModel.swift in Sources */,
 				F8FFB0352A8A942E00CB1A7C /* CenterButtonTableViewCell.swift in Sources */,
 				F8FFAFF62A8A6A9900CB1A7C /* AppDelegate.swift in Sources */,
+				F8C440332A8D2D5F002B1CC6 /* ColorPickerView.swift in Sources */,
 				F8FFB0282A8A6CE700CB1A7C /* RegistrationViewController.swift in Sources */,
 				F8B472CD2A8BD24D005DE249 /* Section.swift in Sources */,
 				F8B472CA2A8BCE61005DE249 /* RightBtnTableViewCell.swift in Sources */,
@@ -630,6 +635,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -647,6 +653,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.porscher.registration.Registration;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -658,6 +666,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -675,6 +684,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.porscher.registration.Registration;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

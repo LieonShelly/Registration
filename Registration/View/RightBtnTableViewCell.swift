@@ -10,12 +10,11 @@ import UIKit
 class RightBtnTableViewCell: UITableViewCell {
     private var btnDidClick: (() -> Void)?
     private lazy var titleLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 15)
         return label
     }()
-    
     private lazy var rightBtn: UIButton = {
         let rightBtn = UIButton(type: .system)
         rightBtn.setTitle("Please select", for: .normal)
@@ -24,9 +23,8 @@ class RightBtnTableViewCell: UITableViewCell {
         rightBtn.addTarget(self, action: #selector(self.btnAction), for: .touchUpInside)
         return rightBtn
     }()
-    
     private lazy var containerView: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.layer.cornerRadius = 4
         view.layer.masksToBounds = true
         view.layer.borderWidth = 1
@@ -55,7 +53,6 @@ class RightBtnTableViewCell: UITableViewCell {
             $0.centerY.equalToSuperview()
             $0.left.equalTo(6)
         }
-        
     }
     
     func config(title: String, btnTitle: String, btnDidClick: (() -> Void)? = nil) {
@@ -72,5 +69,4 @@ class RightBtnTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

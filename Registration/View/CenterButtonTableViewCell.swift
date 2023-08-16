@@ -15,7 +15,6 @@ class CenterButtonTableViewCell: UITableViewCell {
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         return btn
     }()
-    
     private lazy var containerView: UIView = {
        let view = UIView()
         view.layer.cornerRadius = 4
@@ -24,7 +23,7 @@ class CenterButtonTableViewCell: UITableViewCell {
         view.layer.borderColor = UIColor.black.cgColor
         return view
     }()
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(containerView)

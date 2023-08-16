@@ -14,37 +14,33 @@ class AvatarTableViewCell: UITableViewCell {
     var bag: Set<AnyCancellable> = .init()
     private var btnDidClick: (() -> Void)?
     private lazy var titleLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 15)
         return label
     }()
-    
     private lazy var containerView: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.layer.cornerRadius = 4
         view.layer.masksToBounds = true
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.black.cgColor
         return view
     }()
-    
     private lazy var textField: UITextField = {
-       let field = UITextField()
+        let field = UITextField()
         field.textColor = .black
         field.font = UIFont.systemFont(ofSize: 15)
         return field
     }()
-    
     private lazy var avatarView: UIImageView = {
-       let view = UIImageView()
+        let view = UIImageView()
         view.isUserInteractionEnabled = true
         view.layer.cornerRadius = 40
         view.layer.masksToBounds = true
         view.backgroundColor = .blue
         return view
     }()
-    
     private lazy var avatarContainerView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 2
@@ -91,6 +87,10 @@ class AvatarTableViewCell: UITableViewCell {
     
     func updateAvatar(_ img: UIImage?) {
         self.avatarView.image = img
+    }
+    
+    func updateAvatarBgColor(_ color: UIColor?) {
+        self.avatarContainerView.backgroundColor = color
     }
     
     override func prepareForReuse() {

@@ -18,7 +18,8 @@ enum RegistrationFormUISize {
 class RegistrationViewModel {
     let avatarSelectObject: PassthroughSubject<Void, Never> = .init()
     let avatarValue: CurrentValueSubject<UIImage?, Never> = .init(nil)
-
+    let colorValue: CurrentValueSubject<UIColor?, Never> = .init(nil)
+    let selectColor: PassthroughSubject<Void, Never> = .init()
     
     var avatarRowH: CGFloat {
         return RegistrationFormUISize.avatarRowH
@@ -49,7 +50,7 @@ class RegistrationViewModel {
                 .init(cellType: .lastName(.init(title: "Last Name"))),
                 .init(cellType: .phoneNumber(.init(title: "phone Number"))),
                 .init(cellType: .email(.init(title: "Email"))),
-                .init(cellType: .avatarColor(.init(title: "Customer Avatar Color")))
+                .init(cellType: .avatarColor(.init(title: "Customer Avatar Color", handleSubject: selectColor)))
             ]),
             Section(sectionType: .submitBtn, items: [.init(cellType: .submitBtn)])
         ]

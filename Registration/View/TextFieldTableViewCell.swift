@@ -14,7 +14,6 @@ class TextFieldTableViewCell: UITableViewCell {
         label.font = UIFont.systemFont(ofSize: 15)
         return label
     }()
-    
     private lazy var textField: UITextField = {
        let field = UITextField()
         field.textColor = .black
@@ -23,7 +22,6 @@ class TextFieldTableViewCell: UITableViewCell {
         field.textAlignment = .right
         return field
     }()
-    
     private lazy var containerView: UIView = {
        let view = UIView()
         view.layer.cornerRadius = 4
@@ -54,7 +52,6 @@ class TextFieldTableViewCell: UITableViewCell {
             $0.centerY.equalToSuperview()
             $0.left.equalTo(6)
         }
-        
     }
     
     func config(title: String, placeholder: String) {
@@ -65,5 +62,4 @@ class TextFieldTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

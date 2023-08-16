@@ -100,11 +100,13 @@ class BasicInfo: Identfier {
     var title: String
     var content: String = ""
     var placeHolder: String = "Please input"
+    var handleSubject: PassthroughSubject<Void, Never> = .init()
     
-    init(title: String, content: String = "", placeHolder: String = "Please input") {
+    init(title: String, content: String = "", placeHolder: String = "Please input", handleSubject: PassthroughSubject<Void, Never> = .init()) {
         self.title = title
         self.content = content
         self.placeHolder = placeHolder
+        self.handleSubject = handleSubject
     }
 
 }
