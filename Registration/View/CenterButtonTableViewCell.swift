@@ -6,13 +6,16 @@
 //
 
 import UIKit
+import Combine
 
 class CenterButtonTableViewCell: UITableViewCell {
-    private lazy var btn: UIButton = {
+    var bag: Set<AnyCancellable> = .init()
+    private(set) lazy var btn: UIButton = {
        let btn = UIButton()
-        btn.setTitle("SignUp", for: .normal)
-        btn.setTitleColor(.black, for: .normal)
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        btn.setTitleColor(.blue, for: .normal)
+        btn.setTitleColor(.gray, for: .disabled)
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        btn.isEnabled = false
         return btn
     }()
     private lazy var containerView: UIView = {
@@ -23,7 +26,8 @@ class CenterButtonTableViewCell: UITableViewCell {
         view.layer.borderColor = UIColor.black.cgColor
         return view
     }()
-
+    private var btnDidClick: (() -> Void)?
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(containerView)
@@ -38,12 +42,23 @@ class CenterButtonTableViewCell: UITableViewCell {
         }
     }
     
-    func config(title: String) {
+    func config(title: String, btnDidClick: (() -> Void)?) {
         self.btn.setTitle(title, for: .normal)
+        self.btnDidClick = btnDidClick
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        bag.removeAll()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc
+    private func btnAction() {
+        btnDidClick?()
     }
     
 }

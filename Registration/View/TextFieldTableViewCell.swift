@@ -6,8 +6,14 @@
 //
 
 import UIKit
+import Combine
 
 class TextFieldTableViewCell: UITableViewCell {
+    var textChangedPublisher: AnyPublisher<String, Never> {
+        return textChangedSubject.eraseToAnyPublisher()
+    }
+    private let textChangedSubject = PassthroughSubject<String, Never>()
+      
     private lazy var titleLabel: UILabel = {
        let label = UILabel()
         label.textColor = .black
@@ -20,6 +26,7 @@ class TextFieldTableViewCell: UITableViewCell {
         field.font = UIFont.systemFont(ofSize: 15)
         field.placeholder = "Please input"
         field.textAlignment = .right
+        field.delegate = self
         return field
     }()
     private lazy var containerView: UIView = {
@@ -61,5 +68,17 @@ class TextFieldTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension TextFieldTableViewCell: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == self.textField {
+            if let currentText = textField.text, let range = Range(range, in: currentText) {
+                let newText = currentText.replacingCharacters(in: range, with: string)
+                textChangedSubject.send(newText)
+            }
+        }
+        return true
     }
 }

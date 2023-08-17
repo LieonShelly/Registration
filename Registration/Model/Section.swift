@@ -42,24 +42,7 @@ struct Section: Hashable {
             return "submitBtn"
         }
     }
-    /*
-    var items: [Item] {
-        switch self {
-        case .avatar:
-            return [.init(cellType: .avatar(Avatar(filePath: "")))]
-        case .basicInfo:
-            return [
-                .init(cellType: .firstName(.init(title: "Firt Name"))),
-                .init(cellType: .lastName(.init(title: "Last Name"))),
-                .init(cellType: .phoneNumber(.init(title: "phone Number"))),
-                .init(cellType: .email(.init(title: "Email"))),
-                .init(cellType: .avatarColor(.init(title: "Customer Avatar Color")))
-            ]
-        case .submitBtn:
-            return [.init(cellType: .submitBtn)]
-        }
-    }
-    */
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
@@ -67,7 +50,6 @@ struct Section: Hashable {
     static func == (lhs: Section, rhs: Section) -> Bool {
        return lhs.id == rhs.id
     }
-    
 }
 
 
@@ -83,42 +65,38 @@ class Avatar: Hashable {
     var filePath: String
     var title: String = "Avatar"
     let selectSubject: PassthroughSubject<Void, Never>
-    let currentImage: CurrentValueSubject<UIImage?, Never>
     
     init(
         filePath: String,
-        selectSubject: PassthroughSubject<Void, Never>,
-        currentImage: CurrentValueSubject<UIImage?, Never>
+        selectSubject: PassthroughSubject<Void, Never>
     ) {
         self.filePath = filePath
         self.selectSubject = selectSubject
-        self.currentImage = currentImage
     }
 }
 
-class BasicInfo: Identfier {
+class BasicInfo<T>: Identfier {
     var title: String
     var content: String = ""
     var placeHolder: String = "Please input"
-    var handleSubject: PassthroughSubject<Void, Never> = .init()
+    var handleSubject: CurrentValueSubject<T?, Never>
     
-    init(title: String, content: String = "", placeHolder: String = "Please input", handleSubject: PassthroughSubject<Void, Never> = .init()) {
+    init(title: String, content: String = "", placeHolder: String = "Please input", handleSubject: CurrentValueSubject<T?, Never> = .init(nil)) {
         self.title = title
         self.content = content
         self.placeHolder = placeHolder
         self.handleSubject = handleSubject
     }
-
 }
 
 enum RegistrationFormType {
     case avatar(Avatar)
-    case firstName(BasicInfo)
-    case lastName(BasicInfo)
-    case phoneNumber(BasicInfo)
-    case email(BasicInfo)
-    case avatarColor(BasicInfo)
-    case submitBtn
+    case firstName(BasicInfo<String>)
+    case lastName(BasicInfo<String>)
+    case phoneNumber(BasicInfo<String>)
+    case email(BasicInfo<String>)
+    case avatarColor(ButtonEntity)
+    case submitBtn(ButtonEntity)
     case none
 }
 
@@ -134,3 +112,20 @@ class Identfier: Hashable {
     }
 }
 
+struct UserInfo: Codable {
+    var avatarBase64: String
+    var fisrtName: String
+    var lastName: String
+    var phoneNumber: String
+    var email: String
+    var avatarRed: Float
+    var avatarGreen: Float
+    var avatarBlue: Float
+}
+
+struct ButtonEntity {
+    var desc: String
+    var btnTitle: String
+    let handleSubject: PassthroughSubject<Void, Never>
+    let btnEnable: AnyPublisher<Bool, Never>
+}

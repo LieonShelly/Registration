@@ -59,53 +59,20 @@ extension RegistrationViewController {
         return .init(tableView: tableview) {[weak self] (tableView, indexPath, item) -> UITableViewCell? in
             guard let self = self else { return nil}
             switch item.cellType {
-            case .avatar(let entity):
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "AvatarTableViewCell", for: indexPath) as? AvatarTableViewCell else {
-                    return nil
-                }
-                cell.config(title: entity.title, btnDidClick: {
-                    entity.selectSubject.send()
-                })
-                viewmModel.avatarValue
-                    .receive(on: DispatchQueue.main)
-                    .sink(receiveValue: { image in
-                        cell.updateAvatar(image)
-                    })
-                    .store(in: &cell.bag)
-                
-                viewmModel.colorValue
-                    .receive(on: DispatchQueue.main)
-                    .sink(receiveValue: { color in
-                        cell.updateAvatarBgColor(color)
-                    })
-                    .store(in: &cell.bag)
-                return cell
+            case .avatar(let info):
+                return self.getAvatarCelll(tableView, indexPath: indexPath, entity: info)
             case .firstName(let info):
-                let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldTableViewCell", for: indexPath) as? TextFieldTableViewCell
-                cell?.config(title: info.title, placeholder: info.placeHolder)
-                return cell
+                return self.getBasicInfoCell(tableView, indexPath: indexPath, entity: info)
             case .lastName(let info):
-                let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldTableViewCell", for: indexPath) as? TextFieldTableViewCell
-                cell?.config(title: info.title, placeholder: info.placeHolder)
-                return cell
+                return self.getBasicInfoCell(tableView, indexPath: indexPath, entity: info)
             case .phoneNumber(let info):
-                let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldTableViewCell", for: indexPath) as? TextFieldTableViewCell
-                cell?.config(title: info.title, placeholder: info.placeHolder)
-                return cell
+                return self.getBasicInfoCell(tableView, indexPath: indexPath, entity: info)
             case .email(let info):
-                let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldTableViewCell", for: indexPath) as? TextFieldTableViewCell
-                cell?.config(title: info.title, placeholder: info.placeHolder)
-                return cell
+                return self.getBasicInfoCell(tableView, indexPath: indexPath, entity: info)
             case .avatarColor(let info):
-                let cell = tableView.dequeueReusableCell(withIdentifier: "RightBtnTableViewCell", for: indexPath) as? RightBtnTableViewCell
-                cell?.config(title: info.title, btnTitle: "Please select", btnDidClick: {
-                    info.handleSubject.send(())
-                })
-                return cell
-            case .submitBtn:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "CenterButtonTableViewCell", for: indexPath) as? CenterButtonTableViewCell
-                cell?.config(title: "Sign Up")
-                return cell
+                return self.getRightBtnCell(tableView, indexPath: indexPath, entity: info)
+            case .submitBtn(let info):
+                return self.getSubmitCell(tableView, indexPath: indexPath, entity: info)
             default: return UITableViewCell()
             }
         }
@@ -137,23 +104,23 @@ extension RegistrationViewController {
     }
     
     private func configBinding() {
-        viewmModel.avatarSelectObject
+        viewmModel.didClickAvatar
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: {[weak self] in
+            .sink(receiveValue: {[weak self] _ in
                 self?.openPhtoPicker()
             })
             .store(in: &bag)
         
-        viewmModel.selectColor
+        viewmModel.didClickColorSelectBtn
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: {[weak self] in
+            .sink(receiveValue: {[weak self] _ in
                 self?.showColorView()
             })
             .store(in: &bag)
         
         colorPicker.colorValueChanged = {[weak self](red, green, blue) in
             guard let self = self else { return }
-            self.viewmModel.colorValue.send(UIColor(red: red / 255.0, green: green / 255.0, blue: blue / 255.0, alpha: 1))
+            self.viewmModel.didSelectColor.send((red: Float(red), green: Float(green), blue: Float(blue)))
         }
     }
     
@@ -178,6 +145,73 @@ extension RegistrationViewController {
             self.colorPicker.alpha = 0
         }, completion: nil)
     }
+    
+    private func getAvatarCelll(_ tableView: UITableView, indexPath: IndexPath, entity: Avatar) -> AvatarTableViewCell? {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "AvatarTableViewCell", for: indexPath) as? AvatarTableViewCell else {
+            return nil
+        }
+        cell.config(title: entity.title, btnDidClick: {
+            entity.selectSubject.send()
+        })
+        viewmModel.didSelectAvatar
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { image in
+                cell.updateAvatar(image)
+            })
+            .store(in: &cell.bag)
+        
+        viewmModel.didSelectColor
+            .receive(on: DispatchQueue.main)
+            .filter { $0 != nil }
+            .map { $0! }
+            .sink(receiveValue: { color in
+                let uiColor = UIColor(red: CGFloat(color.red) / 255.0, green: CGFloat(color.green)  / 255.0, blue: CGFloat(color.blue) / 255.0, alpha: 1)
+                cell.updateAvatarBgColor(uiColor)
+            })
+            .store(in: &cell.bag)
+        return cell
+    }
+    
+    private func getBasicInfoCell( _ tableView: UITableView, indexPath: IndexPath, entity: BasicInfo<String>) -> TextFieldTableViewCell? {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldTableViewCell", for: indexPath) as? TextFieldTableViewCell else {
+            return nil
+        }
+        cell.config(title: entity.title, placeholder: entity.placeHolder)
+        cell.textChangedPublisher
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: {text in
+                entity.handleSubject.send(text)
+            })
+            .store(in: &bag)
+        return cell
+    }
+    
+    private func getSubmitCell( _ tableView: UITableView, indexPath: IndexPath, entity: ButtonEntity) -> CenterButtonTableViewCell? {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CenterButtonTableViewCell", for: indexPath) as? CenterButtonTableViewCell else {
+            return nil
+        }
+        cell.config(title: entity.btnTitle, btnDidClick: {
+            entity.handleSubject.send(())
+        })
+        entity.btnEnable
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.isEnabled, on: cell.btn)
+            .store(in: &cell.bag)
+        return cell
+    }
+    
+    private func getRightBtnCell( _ tableView: UITableView, indexPath: IndexPath, entity: ButtonEntity) -> RightBtnTableViewCell? {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "RightBtnTableViewCell", for: indexPath) as? RightBtnTableViewCell else {
+            return nil
+        }
+        cell.config(
+            title: entity.desc,
+            btnTitle: "Please select",
+            btnDidClick: {
+                entity.handleSubject.send(())
+            })
+        return cell
+    }
 }
 
 extension RegistrationViewController: UITableViewDelegate {
@@ -198,7 +232,7 @@ extension RegistrationViewController: PHPickerViewControllerDelegate {
         guard !results.isEmpty, let result = results.first else { return }
         result.itemProvider.loadObject(ofClass: UIImage.self) {[weak self] obj, error in
             if let image = obj as? UIImage {
-                self?.viewmModel.avatarValue.send(image)
+                self?.viewmModel.didSelectAvatar.send(image)
             }
         }
     }
