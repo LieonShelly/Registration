@@ -32,6 +32,23 @@ class RegistrationViewController: UIViewController {
         picker.dismissBtn.addTarget(self, action: #selector(self.hideColorView), for: .touchUpInside)
         return picker
     }()
+    private lazy var indicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.color = .blue
+        return indicator
+    }()
+    private lazy var resultLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.layer.cornerRadius = 10
+        label.layer.masksToBounds = true
+        label.textAlignment = .center
+        label.backgroundColor = .red
+        label.numberOfLines = 0
+        label.alpha = 0
+        return label
+    }()
     
     init(viewModel: RegistrationViewModel) {
         self.viewmModel = viewModel
@@ -93,6 +110,8 @@ extension RegistrationViewController {
         view.backgroundColor = .white
         view.addSubview(tableview)
         view.addSubview(colorPicker)
+        view.addSubview(indicator)
+        view.addSubview(resultLabel)
         tableview.snp.makeConstraints {
             $0.edges.equalTo(0)
         }
@@ -101,12 +120,21 @@ extension RegistrationViewController {
             $0.height.equalTo(300)
             $0.bottom.equalTo(-54)
         }
+        indicator.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+        resultLabel.snp.makeConstraints {
+            $0.center.equalToSuperview()
+            $0.left.right.equalToSuperview().inset(20)
+            $0.height.greaterThanOrEqualTo(100)
+        }
     }
     
     private func configBinding() {
         viewmModel.didClickAvatar
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: {[weak self] _ in
+                self?.showLaoding()
                 self?.openPhtoPicker()
             })
             .store(in: &bag)
@@ -115,6 +143,22 @@ extension RegistrationViewController {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: {[weak self] _ in
                 self?.showColorView()
+            })
+            .store(in: &bag)
+        
+        viewmModel.uistate
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: {[weak self] state in
+                switch state {
+                case .laoding:
+                    self?.showLaoding()
+                case .failure(let error):
+                    self?.hideLaoding()
+                    self?.flashMessage(error.localizedDescription)
+                case .success:
+                    self?.hideLaoding()
+                    self?.flashMessage("Success")
+                }
             })
             .store(in: &bag)
         
@@ -144,6 +188,28 @@ extension RegistrationViewController {
         UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
             self.colorPicker.alpha = 0
         }, completion: nil)
+    }
+    
+    private func showLaoding() {
+        indicator.alpha = 1
+        indicator.startAnimating()
+    }
+    private func hideLaoding() {
+        indicator.alpha = 0
+        indicator.stopAnimating()
+    }
+    
+    private func flashMessage(_ text: String) {
+        DispatchQueue.main.async {
+            self.resultLabel.text = text
+            UIView.animate(withDuration: 0.25, delay: 0, animations: {
+                self.resultLabel.alpha = 1
+            })
+            
+            UIView.animate(withDuration: 0.25, delay: 3, animations: {
+                self.resultLabel.alpha = 0
+            })
+        }
     }
     
     private func getAvatarCelll(_ tableView: UITableView, indexPath: IndexPath, entity: Avatar) -> AvatarTableViewCell? {
@@ -228,11 +294,14 @@ extension RegistrationViewController: UITableViewDelegate {
 
 extension RegistrationViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        hideLaoding()
         picker.dismiss(animated: true)
         guard !results.isEmpty, let result = results.first else { return }
         result.itemProvider.loadObject(ofClass: UIImage.self) {[weak self] obj, error in
             if let image = obj as? UIImage {
                 self?.viewmModel.didSelectAvatar.send(image)
+            } else {
+                self?.flashMessage(error?.localizedDescription ?? "Photo Error")
             }
         }
     }

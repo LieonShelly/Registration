@@ -13,6 +13,12 @@
 		F8B472CA2A8BCE61005DE249 /* RightBtnTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B472C92A8BCE61005DE249 /* RightBtnTableViewCell.swift */; };
 		F8B472CD2A8BD24D005DE249 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B472CC2A8BD24D005DE249 /* Section.swift */; };
 		F8C440332A8D2D5F002B1CC6 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C440322A8D2D5F002B1CC6 /* ColorPickerView.swift */; };
+		F8C4403A2A8DD3B7002B1CC6 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C440392A8DD3B7002B1CC6 /* UserInfo.swift */; };
+		F8C4403F2A8DD480002B1CC6 /* RegistrationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C4403E2A8DD480002B1CC6 /* RegistrationRepository.swift */; };
+		F8C440412A8DD48E002B1CC6 /* RegistrationMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C440402A8DD48E002B1CC6 /* RegistrationMapper.swift */; };
+		F8C440442A8DD504002B1CC6 /* StandardRegistrationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C440432A8DD504002B1CC6 /* StandardRegistrationRepository.swift */; };
+		F8C440462A8DD57B002B1CC6 /* UserInfoUserCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C440452A8DD57A002B1CC6 /* UserInfoUserCase.swift */; };
+		F8C440482A8DD628002B1CC6 /* RegistrationFormUIEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C440472A8DD628002B1CC6 /* RegistrationFormUIEntity.swift */; };
 		F8FFAFF62A8A6A9900CB1A7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FFAFF52A8A6A9900CB1A7C /* AppDelegate.swift */; };
 		F8FFAFF82A8A6A9900CB1A7C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FFAFF72A8A6A9900CB1A7C /* SceneDelegate.swift */; };
 		F8FFAFFA2A8A6A9900CB1A7C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FFAFF92A8A6A9900CB1A7C /* ViewController.swift */; };
@@ -60,6 +66,12 @@
 		F8B472C92A8BCE61005DE249 /* RightBtnTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightBtnTableViewCell.swift; sourceTree = "<group>"; };
 		F8B472CC2A8BD24D005DE249 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		F8C440322A8D2D5F002B1CC6 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
+		F8C440392A8DD3B7002B1CC6 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		F8C4403E2A8DD480002B1CC6 /* RegistrationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRepository.swift; sourceTree = "<group>"; };
+		F8C440402A8DD48E002B1CC6 /* RegistrationMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationMapper.swift; sourceTree = "<group>"; };
+		F8C440432A8DD504002B1CC6 /* StandardRegistrationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardRegistrationRepository.swift; sourceTree = "<group>"; };
+		F8C440452A8DD57A002B1CC6 /* UserInfoUserCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoUserCase.swift; sourceTree = "<group>"; };
+		F8C440472A8DD628002B1CC6 /* RegistrationFormUIEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFormUIEntity.swift; sourceTree = "<group>"; };
 		F8FFAFF22A8A6A9900CB1A7C /* Registration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Registration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8FFAFF52A8A6A9900CB1A7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8FFAFF72A8A6A9900CB1A7C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,8 +150,87 @@
 			isa = PBXGroup;
 			children = (
 				F8B472CC2A8BD24D005DE249 /* Section.swift */,
+				F8C440472A8DD628002B1CC6 /* RegistrationFormUIEntity.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F8C440342A8DD34F002B1CC6 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				F8C4403E2A8DD480002B1CC6 /* RegistrationRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		F8C440352A8DD35E002B1CC6 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				F8C440452A8DD57A002B1CC6 /* UserInfoUserCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		F8C440362A8DD36B002B1CC6 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		F8C440372A8DD377002B1CC6 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				F8C440402A8DD48E002B1CC6 /* RegistrationMapper.swift */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
+		F8C440382A8DD3AA002B1CC6 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				F8C440392A8DD3B7002B1CC6 /* UserInfo.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		F8C4403B2A8DD3BC002B1CC6 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				F8B472CB2A8BD23F005DE249 /* Model */,
+				F8FFB02F2A8A7B9A00CB1A7C /* ViewModel */,
+				F8FFB0262A8A6BED00CB1A7C /* Controller */,
+				F8FFB0252A8A6BE300CB1A7C /* View */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		F8C4403C2A8DD433002B1CC6 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F8C440342A8DD34F002B1CC6 /* Repository */,
+				F8C440372A8DD377002B1CC6 /* Mapper */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		F8C4403D2A8DD43E002B1CC6 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				F8C440422A8DD4DC002B1CC6 /* Repository */,
+				F8C440352A8DD35E002B1CC6 /* UseCase */,
+				F8C440362A8DD36B002B1CC6 /* Service */,
+				F8C440382A8DD3AA002B1CC6 /* Entity */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		F8C440422A8DD4DC002B1CC6 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				F8C440432A8DD504002B1CC6 /* StandardRegistrationRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		F8FFAFE92A8A6A9900CB1A7C = {
@@ -167,10 +258,9 @@
 		F8FFAFF42A8A6A9900CB1A7C /* Registration */ = {
 			isa = PBXGroup;
 			children = (
-				F8B472CB2A8BD23F005DE249 /* Model */,
-				F8FFB02F2A8A7B9A00CB1A7C /* ViewModel */,
-				F8FFB0262A8A6BED00CB1A7C /* Controller */,
-				F8FFB0252A8A6BE300CB1A7C /* View */,
+				F8C4403D2A8DD43E002B1CC6 /* Domain */,
+				F8C4403C2A8DD433002B1CC6 /* Data */,
+				F8C4403B2A8DD3BC002B1CC6 /* UI */,
 				F8FFAFF52A8A6A9900CB1A7C /* AppDelegate.swift */,
 				F8FFAFF72A8A6A9900CB1A7C /* SceneDelegate.swift */,
 				F8FFAFF92A8A6A9900CB1A7C /* ViewController.swift */,
@@ -451,11 +541,17 @@
 			files = (
 				F8FFAFFA2A8A6A9900CB1A7C /* ViewController.swift in Sources */,
 				F8FFB0312A8A7BB100CB1A7C /* RegistrationViewModel.swift in Sources */,
+				F8C440482A8DD628002B1CC6 /* RegistrationFormUIEntity.swift in Sources */,
 				F8FFB0352A8A942E00CB1A7C /* CenterButtonTableViewCell.swift in Sources */,
 				F8FFAFF62A8A6A9900CB1A7C /* AppDelegate.swift in Sources */,
+				F8C440442A8DD504002B1CC6 /* StandardRegistrationRepository.swift in Sources */,
+				F8C4403A2A8DD3B7002B1CC6 /* UserInfo.swift in Sources */,
 				F8C440332A8D2D5F002B1CC6 /* ColorPickerView.swift in Sources */,
+				F8C440462A8DD57B002B1CC6 /* UserInfoUserCase.swift in Sources */,
+				F8C4403F2A8DD480002B1CC6 /* RegistrationRepository.swift in Sources */,
 				F8FFB0282A8A6CE700CB1A7C /* RegistrationViewController.swift in Sources */,
 				F8B472CD2A8BD24D005DE249 /* Section.swift in Sources */,
+				F8C440412A8DD48E002B1CC6 /* RegistrationMapper.swift in Sources */,
 				F8B472CA2A8BCE61005DE249 /* RightBtnTableViewCell.swift in Sources */,
 				F8FFAFF82A8A6A9900CB1A7C /* SceneDelegate.swift in Sources */,
 				F8FFB02A2A8A71BE00CB1A7C /* TextFieldTableViewCell.swift in Sources */,

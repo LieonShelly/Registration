@@ -112,16 +112,6 @@ class Identfier: Hashable {
     }
 }
 
-struct UserInfo: Codable {
-    var avatarBase64: String
-    var fisrtName: String
-    var lastName: String
-    var phoneNumber: String
-    var email: String
-    var avatarRed: Float
-    var avatarGreen: Float
-    var avatarBlue: Float
-}
 
 struct ButtonEntity {
     var desc: String

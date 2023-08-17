@@ -16,6 +16,7 @@ class CenterButtonTableViewCell: UITableViewCell {
         btn.setTitleColor(.gray, for: .disabled)
         btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         btn.isEnabled = false
+        btn.addTarget(self, action: #selector(self.btnAction), for: .touchUpInside)
         return btn
     }()
     private lazy var containerView: UIView = {
