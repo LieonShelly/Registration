@@ -105,8 +105,11 @@ class RegistrationViewModel {
                 }
             }, receiveValue: {[weak self] value in
                 guard let self = self else { return }
-                self.uistateSubject.send(.success)
-                
+                if value {
+                    self.uistateSubject.send(.success)
+                } else {
+                    self.uistateSubject.send(.failure(NSError(domain: "Submit failed", code: -100)))
+                }
             })
             .store(in: &bag)
     }

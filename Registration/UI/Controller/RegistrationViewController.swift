@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import Combine
 import PhotosUI
+import IQKeyboardManagerSwift
 
 class RegistrationViewController: UIViewController {
     private var bag: Set<AnyCancellable> = .init()
@@ -106,6 +107,7 @@ extension RegistrationViewController {
     }
     
     private func configUI() {
+        IQKeyboardManager.shared.enable = true
         title = "Registration"
         view.backgroundColor = .white
         view.addSubview(tableview)

@@ -7,7 +7,8 @@ target 'Registration' do
   use_frameworks!
 
   pod 'SnapKit', '~> 5.6.0'
-
+  pod 'IQKeyboardManagerSwift'
+  
   target 'RegistrationTests' do
     inherit! :search_paths
     # Pods for testing

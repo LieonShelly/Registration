@@ -10,8 +10,9 @@ import Combine
 
 class RegistrationMapper {
     static func mapToServer(_ uiEntity: RegistrationFormUIEntity) -> UserInfo {
+        let imageData = uiEntity.avatar.jpegData(compressionQuality: 0.8)
         return UserInfo(
-            avatarBase64: "",
+            avatarBase64: imageData?.base64EncodedString() ?? "",
             fisrtName: uiEntity.fisrtName,
             lastName: uiEntity.lastName,
             phoneNumber: uiEntity.phoneNumber,
