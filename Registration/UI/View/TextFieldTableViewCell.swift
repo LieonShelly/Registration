@@ -26,7 +26,7 @@ class TextFieldTableViewCell: UITableViewCell {
         field.font = UIFont.systemFont(ofSize: 15)
         field.placeholder = "Please input"
         field.textAlignment = .right
-        field.delegate = self
+        field.addTarget(self, action: #selector(self.textChanged(_:)), for: .editingChanged)
         return field
     }()
     private lazy var containerView: UIView = {
@@ -71,14 +71,11 @@ class TextFieldTableViewCell: UITableViewCell {
     }
 }
 
-extension TextFieldTableViewCell: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == self.textField {
-            if let currentText = textField.text, let range = Range(range, in: currentText) {
-                let newText = currentText.replacingCharacters(in: range, with: string)
-                textChangedSubject.send(newText)
-            }
+extension TextFieldTableViewCell {
+    @objc
+   private func textChanged(_ textField: UITextField) {
+        if textField == self.textField, let text = textField.text {
+            textChangedSubject.send(text)
         }
-        return true
     }
 }

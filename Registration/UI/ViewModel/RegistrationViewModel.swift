@@ -11,7 +11,7 @@ import Combine
 
 enum RegistrationFormUISize {
     static let avatarRowH: CGFloat = 120
-    static let submitSectionBottom: CGFloat = 120
+    static let submitSectionBottom: CGFloat = 80
     static let submitRowH: CGFloat = 100
 }
 
@@ -21,7 +21,6 @@ class RegistrationViewModel {
         case failure(Error)
         case laoding
     }
-    // input
     let didClickAvatar: PassthroughSubject<Void, Never> = .init()
     let didClickColorSelectBtn: PassthroughSubject<Void, Never> = .init()
     let didClickSignUpBtn: PassthroughSubject<Void, Never> = .init()
@@ -29,15 +28,16 @@ class RegistrationViewModel {
     let lastNameSubject: CurrentValueSubject<String?, Never> = .init(nil)
     let phoneNumberSubject: CurrentValueSubject<String?, Never> = .init(nil)
     let emailNumberSubject: CurrentValueSubject<String?, Never> = .init(nil)
-    let signupBtnEnable: AnyPublisher<Bool, Never>
-    let uistate: AnyPublisher<UIState, Never>
     let didSelectAvatar: CurrentValueSubject<UIImage?, Never> = .init(nil)
     let didSelectColor: CurrentValueSubject<(red: Float, green: Float, blue: Float)?, Never> = .init(nil)
     let sections: [Section]
+    let signupBtnEnable: AnyPublisher<Bool, Never>
+    let uistate: AnyPublisher<UIState, Never>
     private let usecause: UserInfoUserCase
     private var bag: Set<AnyCancellable> = .init()
     private let uistateSubject: PassthroughSubject<UIState, Never> = .init()
     private let allValid: CurrentValueSubject<Bool, Never> = .init(false)
+    
     var avatarRowH: CGFloat {
         return RegistrationFormUISize.avatarRowH
     }
@@ -51,20 +51,19 @@ class RegistrationViewModel {
                 (RegistrationFormUISize.submitRowH + RegistrationFormUISize.submitSectionBottom)) / basicItemCount
     }
     
-    init() {
+    init(repository: UserInfoRepository) {
         signupBtnEnable = allValid.eraseToAnyPublisher()
         uistate = uistateSubject.eraseToAnyPublisher()
-        usecause = UserInfoUserCase(repository: StandardRegistrationRepository())
+        usecause = UserInfoUserCase(repository: repository)
         sections = [
             Section(sectionType: .avatar, items: [
                 .init(cellType: .avatar(.init(
-                    filePath: "",
                     selectSubject: didClickAvatar
                 )))]),
             Section(sectionType: .basicInfo, items: [
                 .init(cellType: .firstName(.init(title: "Firt Name", handleSubject: firtNameSubject))),
                 .init(cellType: .lastName(.init(title: "Last Name", handleSubject: lastNameSubject))),
-                .init(cellType: .phoneNumber(.init(title: "phone Number", handleSubject: phoneNumberSubject))),
+                .init(cellType: .phoneNumber(.init(title: "Phone Number", handleSubject: phoneNumberSubject))),
                 .init(cellType: .email(.init(title: "Email", handleSubject: emailNumberSubject))),
                 .init(cellType: .avatarColor(.init(
                     desc: "Customer Avatar Color",
@@ -84,8 +83,10 @@ class RegistrationViewModel {
     }
     
     func submit() {
-        guard allValid.value else { return }
         uistateSubject.send(.laoding)
+        guard allValid.value else {
+            return uistateSubject.send(.failure(NSError(domain: "Field dismiss", code: -101)))
+        }
         let form = RegistrationFormUIEntity(
             avatar: didSelectAvatar.value!,
             fisrtName: firtNameSubject.value!,
@@ -126,9 +127,9 @@ extension RegistrationViewModel {
             .eraseToAnyPublisher()
         
         let didSelectAvatar = didSelectAvatar.map { $0 != nil }.eraseToAnyPublisher()
-        Publishers.CombineLatest(didInputAlltextInfo, didSelectAvatar)
-           .print()
-           .map { $0 && $1 }
+        let didSelectColor = self.didSelectColor.map { $0 != nil }.eraseToAnyPublisher()
+        Publishers.CombineLatest3(didInputAlltextInfo, didSelectAvatar, didSelectColor)
+           .map { $0 && $1 && $2 }
            .sink(receiveValue: { [weak self] valid in
                guard let self = self else { return }
                self.allValid.send(valid)

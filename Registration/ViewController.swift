@@ -9,14 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-
-
     @IBAction func registerBtnAction(_ sender: UIButton) {
-        let registerVC = RegistrationViewController(viewModel: .init())
+        let registerVC = RegistrationViewController(viewModel: .init(repository: StandardRegistrationRepository()))
         navigationController?.pushViewController(registerVC, animated: true)
     }
 }

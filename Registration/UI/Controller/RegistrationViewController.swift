@@ -103,10 +103,13 @@ extension RegistrationViewController {
             snaphot.appendItems(section.items, toSection: section)
         }
         dataSource.apply(snaphot)
-        colorPicker.setSliderValue(red: 25, green: 100, blue: 255)
+        colorPicker.setSliderValue(red: 255, green: 255, blue: 255)
     }
     
     private func configUI() {
+        let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        navigationController?.navigationBar.tintColor = UIColor.black
         IQKeyboardManager.shared.enable = true
         title = "Registration"
         view.backgroundColor = .white

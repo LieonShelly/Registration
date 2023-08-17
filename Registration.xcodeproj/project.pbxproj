@@ -7,25 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		70D491DB3A1B6B90D42D9000 /* Pods_RegistrationUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D36467E1ABD36B0B6DBC916 /* Pods_RegistrationUITests.framework */; };
+		5F6855E93826988CA88A3F9A /* libPods-RegistrationUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F13C1C7B989AD7033BAE1CB /* libPods-RegistrationUITests.a */; };
 		919E279C60AFEAA7C44F9A4B /* Pods_RegistrationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D4A98F2C1AC96A62448CAFF /* Pods_RegistrationTests.framework */; };
 		CEF1CEF6F0A5302330CB718B /* Pods_Registration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 509A7A6C84D7F7575F3D513D /* Pods_Registration.framework */; };
 		F8B472CA2A8BCE61005DE249 /* RightBtnTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B472C92A8BCE61005DE249 /* RightBtnTableViewCell.swift */; };
 		F8B472CD2A8BD24D005DE249 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B472CC2A8BD24D005DE249 /* Section.swift */; };
 		F8C440332A8D2D5F002B1CC6 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C440322A8D2D5F002B1CC6 /* ColorPickerView.swift */; };
 		F8C4403A2A8DD3B7002B1CC6 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C440392A8DD3B7002B1CC6 /* UserInfo.swift */; };
-		F8C4403F2A8DD480002B1CC6 /* RegistrationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C4403E2A8DD480002B1CC6 /* RegistrationRepository.swift */; };
+		F8C4403F2A8DD480002B1CC6 /* UserInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C4403E2A8DD480002B1CC6 /* UserInfoRepository.swift */; };
 		F8C440412A8DD48E002B1CC6 /* RegistrationMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C440402A8DD48E002B1CC6 /* RegistrationMapper.swift */; };
 		F8C440442A8DD504002B1CC6 /* StandardRegistrationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C440432A8DD504002B1CC6 /* StandardRegistrationRepository.swift */; };
 		F8C440462A8DD57B002B1CC6 /* UserInfoUserCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C440452A8DD57A002B1CC6 /* UserInfoUserCase.swift */; };
 		F8C440482A8DD628002B1CC6 /* RegistrationFormUIEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C440472A8DD628002B1CC6 /* RegistrationFormUIEntity.swift */; };
+		F8C4404A2A8DF2A7002B1CC6 /* RegistrationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C440492A8DF2A7002B1CC6 /* RegistrationViewModelTests.swift */; };
+		F8C4404D2A8DF303002B1CC6 /* MockRegistrationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C4404C2A8DF303002B1CC6 /* MockRegistrationRepository.swift */; };
 		F8FFAFF62A8A6A9900CB1A7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FFAFF52A8A6A9900CB1A7C /* AppDelegate.swift */; };
 		F8FFAFF82A8A6A9900CB1A7C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FFAFF72A8A6A9900CB1A7C /* SceneDelegate.swift */; };
 		F8FFAFFA2A8A6A9900CB1A7C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FFAFF92A8A6A9900CB1A7C /* ViewController.swift */; };
 		F8FFAFFD2A8A6A9900CB1A7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8FFAFFB2A8A6A9900CB1A7C /* Main.storyboard */; };
 		F8FFAFFF2A8A6A9C00CB1A7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8FFAFFE2A8A6A9C00CB1A7C /* Assets.xcassets */; };
 		F8FFB0022A8A6A9C00CB1A7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8FFB0002A8A6A9C00CB1A7C /* LaunchScreen.storyboard */; };
-		F8FFB00D2A8A6A9D00CB1A7C /* RegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FFB00C2A8A6A9D00CB1A7C /* RegistrationTests.swift */; };
 		F8FFB0172A8A6A9D00CB1A7C /* RegistrationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FFB0162A8A6A9D00CB1A7C /* RegistrationUITests.swift */; };
 		F8FFB0192A8A6A9D00CB1A7C /* RegistrationUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FFB0182A8A6A9D00CB1A7C /* RegistrationUITestsLaunchTests.swift */; };
 		F8FFB0282A8A6CE700CB1A7C /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FFB0272A8A6CE700CB1A7C /* RegistrationViewController.swift */; };
@@ -58,7 +59,7 @@
 		509A7A6C84D7F7575F3D513D /* Pods_Registration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Registration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D4A98F2C1AC96A62448CAFF /* Pods_RegistrationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RegistrationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70D4ED8E28217BA397A83B92 /* Pods-Registration-RegistrationUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Registration-RegistrationUITests.debug.xcconfig"; path = "Target Support Files/Pods-Registration-RegistrationUITests/Pods-Registration-RegistrationUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		7D36467E1ABD36B0B6DBC916 /* Pods_RegistrationUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RegistrationUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F13C1C7B989AD7033BAE1CB /* libPods-RegistrationUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RegistrationUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAAE41AB110314584CA063B8 /* Pods-Registration.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Registration.release.xcconfig"; path = "Target Support Files/Pods-Registration/Pods-Registration.release.xcconfig"; sourceTree = "<group>"; };
 		C66448A0F884014B8B2FF1A0 /* Pods-Registration-RegistrationUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Registration-RegistrationUITests.release.xcconfig"; path = "Target Support Files/Pods-Registration-RegistrationUITests/Pods-Registration-RegistrationUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D3F7375DEC0F3FD513A8E79D /* Pods-RegistrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RegistrationTests.release.xcconfig"; path = "Target Support Files/Pods-RegistrationTests/Pods-RegistrationTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -67,11 +68,13 @@
 		F8B472CC2A8BD24D005DE249 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		F8C440322A8D2D5F002B1CC6 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		F8C440392A8DD3B7002B1CC6 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
-		F8C4403E2A8DD480002B1CC6 /* RegistrationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRepository.swift; sourceTree = "<group>"; };
+		F8C4403E2A8DD480002B1CC6 /* UserInfoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoRepository.swift; sourceTree = "<group>"; };
 		F8C440402A8DD48E002B1CC6 /* RegistrationMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationMapper.swift; sourceTree = "<group>"; };
 		F8C440432A8DD504002B1CC6 /* StandardRegistrationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardRegistrationRepository.swift; sourceTree = "<group>"; };
 		F8C440452A8DD57A002B1CC6 /* UserInfoUserCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoUserCase.swift; sourceTree = "<group>"; };
 		F8C440472A8DD628002B1CC6 /* RegistrationFormUIEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFormUIEntity.swift; sourceTree = "<group>"; };
+		F8C440492A8DF2A7002B1CC6 /* RegistrationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModelTests.swift; sourceTree = "<group>"; };
+		F8C4404C2A8DF303002B1CC6 /* MockRegistrationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRegistrationRepository.swift; sourceTree = "<group>"; };
 		F8FFAFF22A8A6A9900CB1A7C /* Registration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Registration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8FFAFF52A8A6A9900CB1A7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8FFAFF72A8A6A9900CB1A7C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,7 +84,6 @@
 		F8FFB0012A8A6A9C00CB1A7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F8FFB0032A8A6A9C00CB1A7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8FFB0082A8A6A9D00CB1A7C /* RegistrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RegistrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F8FFB00C2A8A6A9D00CB1A7C /* RegistrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTests.swift; sourceTree = "<group>"; };
 		F8FFB0122A8A6A9D00CB1A7C /* RegistrationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RegistrationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8FFB0162A8A6A9D00CB1A7C /* RegistrationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationUITests.swift; sourceTree = "<group>"; };
 		F8FFB0182A8A6A9D00CB1A7C /* RegistrationUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -114,7 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70D491DB3A1B6B90D42D9000 /* Pods_RegistrationUITests.framework in Frameworks */,
+				5F6855E93826988CA88A3F9A /* libPods-RegistrationUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,7 +128,7 @@
 			children = (
 				509A7A6C84D7F7575F3D513D /* Pods_Registration.framework */,
 				5D4A98F2C1AC96A62448CAFF /* Pods_RegistrationTests.framework */,
-				7D36467E1ABD36B0B6DBC916 /* Pods_RegistrationUITests.framework */,
+				8F13C1C7B989AD7033BAE1CB /* libPods-RegistrationUITests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -158,7 +160,7 @@
 		F8C440342A8DD34F002B1CC6 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				F8C4403E2A8DD480002B1CC6 /* RegistrationRepository.swift */,
+				F8C4403E2A8DD480002B1CC6 /* UserInfoRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -169,13 +171,6 @@
 				F8C440452A8DD57A002B1CC6 /* UserInfoUserCase.swift */,
 			);
 			path = UseCase;
-			sourceTree = "<group>";
-		};
-		F8C440362A8DD36B002B1CC6 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		F8C440372A8DD377002B1CC6 /* Mapper */ = {
@@ -219,7 +214,6 @@
 			children = (
 				F8C440422A8DD4DC002B1CC6 /* Repository */,
 				F8C440352A8DD35E002B1CC6 /* UseCase */,
-				F8C440362A8DD36B002B1CC6 /* Service */,
 				F8C440382A8DD3AA002B1CC6 /* Entity */,
 			);
 			path = Domain;
@@ -231,6 +225,14 @@
 				F8C440432A8DD504002B1CC6 /* StandardRegistrationRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		F8C4404B2A8DF2EC002B1CC6 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				F8C4404C2A8DF303002B1CC6 /* MockRegistrationRepository.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		F8FFAFE92A8A6A9900CB1A7C = {
@@ -258,12 +260,12 @@
 		F8FFAFF42A8A6A9900CB1A7C /* Registration */ = {
 			isa = PBXGroup;
 			children = (
-				F8C4403D2A8DD43E002B1CC6 /* Domain */,
-				F8C4403C2A8DD433002B1CC6 /* Data */,
-				F8C4403B2A8DD3BC002B1CC6 /* UI */,
 				F8FFAFF52A8A6A9900CB1A7C /* AppDelegate.swift */,
 				F8FFAFF72A8A6A9900CB1A7C /* SceneDelegate.swift */,
 				F8FFAFF92A8A6A9900CB1A7C /* ViewController.swift */,
+				F8C4403D2A8DD43E002B1CC6 /* Domain */,
+				F8C4403C2A8DD433002B1CC6 /* Data */,
+				F8C4403B2A8DD3BC002B1CC6 /* UI */,
 				F8FFAFFB2A8A6A9900CB1A7C /* Main.storyboard */,
 				F8FFAFFE2A8A6A9C00CB1A7C /* Assets.xcassets */,
 				F8FFB0002A8A6A9C00CB1A7C /* LaunchScreen.storyboard */,
@@ -275,7 +277,8 @@
 		F8FFB00B2A8A6A9D00CB1A7C /* RegistrationTests */ = {
 			isa = PBXGroup;
 			children = (
-				F8FFB00C2A8A6A9D00CB1A7C /* RegistrationTests.swift */,
+				F8C4404B2A8DF2EC002B1CC6 /* Mock */,
+				F8C440492A8DF2A7002B1CC6 /* RegistrationViewModelTests.swift */,
 			);
 			path = RegistrationTests;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				F8FFB0042A8A6A9D00CB1A7C /* Sources */,
 				F8FFB0052A8A6A9D00CB1A7C /* Frameworks */,
 				F8FFB0062A8A6A9D00CB1A7C /* Resources */,
+				C6B62360D81EBC417F222869 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -493,6 +497,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C6B62360D81EBC417F222869 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RegistrationTests/Pods-RegistrationTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RegistrationTests/Pods-RegistrationTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RegistrationTests/Pods-RegistrationTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D61675590D3F0254CA48F3BC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -548,7 +569,7 @@
 				F8C4403A2A8DD3B7002B1CC6 /* UserInfo.swift in Sources */,
 				F8C440332A8D2D5F002B1CC6 /* ColorPickerView.swift in Sources */,
 				F8C440462A8DD57B002B1CC6 /* UserInfoUserCase.swift in Sources */,
-				F8C4403F2A8DD480002B1CC6 /* RegistrationRepository.swift in Sources */,
+				F8C4403F2A8DD480002B1CC6 /* UserInfoRepository.swift in Sources */,
 				F8FFB0282A8A6CE700CB1A7C /* RegistrationViewController.swift in Sources */,
 				F8B472CD2A8BD24D005DE249 /* Section.swift in Sources */,
 				F8C440412A8DD48E002B1CC6 /* RegistrationMapper.swift in Sources */,
@@ -563,7 +584,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8FFB00D2A8A6A9D00CB1A7C /* RegistrationTests.swift in Sources */,
+				F8C4404A2A8DF2A7002B1CC6 /* RegistrationViewModelTests.swift in Sources */,
+				F8C4404D2A8DF303002B1CC6 /* MockRegistrationRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -790,7 +812,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EBF20DECD40E4407F91BAA74 /* Pods-RegistrationTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -810,7 +832,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D3F7375DEC0F3FD513A8E79D /* Pods-RegistrationTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -830,7 +852,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 00C62C9CBF897CBE14C76095 /* Pods-RegistrationUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -848,7 +870,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FF371F36E19AD4F1625F96CB /* Pods-RegistrationUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
