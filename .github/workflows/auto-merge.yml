@@ -25,4 +25,4 @@ jobs:
             git merge --no-ff ${{ github.event.pull_request.head.sha }} -m "Merge pull request #${{ github.event.pull_request.number }} via GitHub Actions"
             git push origin main
         env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
