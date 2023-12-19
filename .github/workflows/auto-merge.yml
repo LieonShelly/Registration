@@ -13,6 +13,6 @@ jobs:
           ref: ${{ github.head_ref }}
           fetch-depath: 0
       - name: Merge pull request
-        run: git merge --no-ff -m "Merge pull request #${{ github.event.pull_request.number }}" ${{ github.event.pull_request.head.sha }}
+        run: git merge --no-ff -m 'Merge pull request #${{ github.event.pull_request.number }}' ${{ github.event.pull_request.head.sha }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
