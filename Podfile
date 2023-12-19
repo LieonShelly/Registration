@@ -1,6 +1,7 @@
 # Uncomment the next line to define a global platform for your project
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '14.0'
+plugin 'cocoapods-binary'
 
 def shared
   use_frameworks!

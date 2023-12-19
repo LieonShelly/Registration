@@ -13,5 +13,22 @@ class ViewController: UIViewController {
         let registerVC = RegistrationViewController(viewModel: .init(repository: StandardRegistrationRepository()))
         navigationController?.pushViewController(registerVC, animated: true)
     }
+    
+    @Wrapper
+    var intValue: Int = 1
+}
+
+@propertyWrapper
+struct Wrapper<T> {
+    var wrappedValue: T {
+        didSet {
+        }
+    }
+    var projectedValue: String
+    
+    init(wrappedValue: T) {
+        self.wrappedValue = wrappedValue
+        self.projectedValue = "projectedValue:\(wrappedValue)"
+    }
 }
 
