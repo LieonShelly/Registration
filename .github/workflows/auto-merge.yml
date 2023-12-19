@@ -12,7 +12,14 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
           fetch-depath: 0
-      - name: Merge pull request
-        run: git merge --no-ff -m 'Merge pull request #${{ github.event.pull_request.number }}' ${{ github.event.pull_request.head.sha }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Merge Pull Request
+            uses: actions/github-script@v6
+            with:
+              github-token: ${{secrets.GITHUB_TOKEN}}
+              script: |
+                github.rest.pulls.merge({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  pull_number: context.issue.number
+                })
