@@ -14,12 +14,12 @@ jobs:
           fetch-depath: 0
 
       - name: Setup Git Config
-        run: 
+        run: |
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'actions@github.com'
 
       - name: Merge Pull Request
-        run:
+        run: |
             git fetch origin main
             git checkout main
             git merge --no-ff ${{ github.event.pull_request.head.sha }} -m "Merge pull request #${{ github.event.pull_request.number }} via GitHub Actions"
